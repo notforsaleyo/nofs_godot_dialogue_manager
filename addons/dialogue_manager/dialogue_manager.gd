@@ -122,6 +122,12 @@ func _ready() -> void:
 		_send_current_scene_to_debugger()
 
 
+func _exit_tree() -> void:
+	# Release our capture before Godot clears its debugger registry during shutdown.
+	if EngineDebugger.has_capture("dm"):
+		EngineDebugger.unregister_message_capture("dm")
+
+
 ## Set a random seed.
 func reseed_randomizer(next_seed: int) -> void:
 	_rng.seed = next_seed
