@@ -195,6 +195,9 @@ static func get_dependent_paths_for_reimport(on_path: String) -> PackedStringArr
 # Recursively find any dialogue files in a directory.
 static func _get_dialogue_files_in_filesystem(path: String = "res://") -> PackedStringArray:
 	var files: PackedStringArray = []
+	# Match Godot's ignored-directory boundary before descending into a subtree.
+	if FileAccess.file_exists(path.path_join(".gdignore")):
+		return files
 
 	if DirAccess.dir_exists_absolute(path):
 		var dir: DirAccess = DirAccess.open(path)
