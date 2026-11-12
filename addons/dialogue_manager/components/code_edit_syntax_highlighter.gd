@@ -36,6 +36,10 @@ func _get_line_syntax_highlighting(line: int) -> Dictionary:
 			colors[index] = { color = theme.conditions_color }
 			colors[index + "using ".length()] = { color = theme.text_color }
 
+		DMConstants.TYPE_META:
+			colors[index] = { color = theme.conditions_color }
+			colors[index + "meta ".length()] = { color = theme.text_color }
+
 		DMConstants.TYPE_IMPORT:
 			colors[index] = { color = theme.conditions_color }
 			var import: RegExMatch = regex.IMPORT_REGEX.search(text)

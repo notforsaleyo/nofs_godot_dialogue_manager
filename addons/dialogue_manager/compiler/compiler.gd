@@ -10,6 +10,7 @@ static func compile_string(text: String, path: String) -> DMCompilerResult:
 	var result: DMCompilerResult = DMCompilerResult.new()
 	result.imported_paths = compilation.imported_paths
 	result.using_states = compilation.using_states
+	result.file_meta = compilation.file_meta
 	result.character_names = compilation.character_names
 	result.cues = compilation.cues
 	result.first_cue = compilation.first_cue

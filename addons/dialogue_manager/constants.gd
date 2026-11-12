@@ -48,6 +48,7 @@ const TOKEN_ERROR: StringName = &"error"
 const TYPE_UNKNOWN: StringName = &""
 const TYPE_IMPORT: StringName = &"import"
 const TYPE_USING: StringName = &"using"
+const TYPE_META: StringName = &"meta"
 const TYPE_COMMENT: StringName = &"comment"
 const TYPE_RESPONSE: StringName = &"response"
 const TYPE_CUE: StringName = &"cue"
@@ -114,6 +115,7 @@ const ERR_UNEXPECTED_SYNTAX_ON_NESTED_DIALOGUE_LINE: int = 141
 const ERR_NESTED_DIALOGUE_INVALID_JUMP: int = 142
 const ERR_MISSING_RESOURCE_FOR_AUTOSTART: int = 143
 const ERR_LONELY_STATIC_ID: int = 144
+const ERR_INVALID_META: int = 145
 
 
 static var _current_locale: String = ""
@@ -212,6 +214,8 @@ static func get_error_message(error: int) -> String:
 			return translate(&"errors.missing_resource_for_autostart")
 		ERR_LONELY_STATIC_ID:
 			return translate(&"Static IDs can't be on a line with no other content.")
+		ERR_INVALID_META:
+			return translate(&"errors.invalid_meta")
 
 	return translate(&"errors.unknown")
 

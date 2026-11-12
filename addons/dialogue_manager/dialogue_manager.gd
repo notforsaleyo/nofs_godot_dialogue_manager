@@ -597,6 +597,7 @@ func create_resource_from_text(text: String) -> Resource:
 
 	var resource: DialogueResource = DialogueResource.new()
 	resource.using_states = result.using_states
+	resource.file_meta = result.file_meta
 	resource.cues = result.cues
 	resource.first_cue = result.first_cue
 	resource.character_names = result.character_names

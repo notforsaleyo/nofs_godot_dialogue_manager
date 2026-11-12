@@ -8,6 +8,9 @@ var imported_paths: PackedStringArray = []
 ## Any "using" directives.
 var using_states: PackedStringArray = []
 
+## Any "meta" directives, as a map of keys and values.
+var file_meta: Dictionary = {}
+
 ## All cues in the file and the line they point to.
 var cues: Dictionary = {}
 

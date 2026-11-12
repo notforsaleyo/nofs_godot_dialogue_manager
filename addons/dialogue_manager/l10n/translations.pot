@@ -230,6 +230,9 @@ msgstr ""
 msgid "errors.unknown_using"
 msgstr ""
 
+msgid "errors.invalid_meta"
+msgstr ""
+
 msgid "errors.empty_cue"
 msgstr ""
 

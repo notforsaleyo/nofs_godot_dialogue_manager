@@ -12,6 +12,8 @@ var file_path: String
 var imported_paths: PackedStringArray = []
 ## A list of state names from "using" clauses.
 var using_states: PackedStringArray = []
+## A map of keys and values from "meta" lines.
+var file_meta: Dictionary = {}
 ## A map of cues in this file.
 var cues: Dictionary = {}
 ## The first encountered cue in this file.
@@ -170,6 +172,14 @@ func build_line_tree(raw_lines: PackedStringArray) -> DMTreeLine:
 				elif not using_state in using_states:
 					using_states.append(using_state)
 				continue
+		# Handle any "meta" directives.
+		elif tree_line.type == DMConstants.TYPE_META:
+			var meta_match: RegExMatch = regex.META_REGEX.search(tree_line.text)
+			if meta_match == null:
+				add_error(tree_line.line_number, 0, DMConstants.ERR_INVALID_META)
+			else:
+				file_meta[meta_match.get_string("key")] = meta_match.get_string("value").strip_edges()
+			continue
 		# Ignore import lines because they've already been processed.
 		elif is_import_line(line_without_indent):
 			continue
@@ -910,6 +920,9 @@ func get_line_type(raw_line: String) -> String:
 
 	if text.begins_with("using "):
 		return DMConstants.TYPE_USING
+
+	if text.begins_with("meta "):
+		return DMConstants.TYPE_META
 
 	if text.begins_with("#"):
 		return DMConstants.TYPE_COMMENT

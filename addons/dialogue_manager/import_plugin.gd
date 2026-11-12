@@ -94,6 +94,7 @@ func _import(source_file: String, save_path: String, _options: Dictionary, _plat
 	resource.set_meta("dialogue_manager_version", version)
 
 	resource.using_states = result.using_states
+	resource.file_meta = result.file_meta
 	resource.cues = result.cues
 	resource.first_cue = result.first_cue
 	resource.character_names = result.character_names

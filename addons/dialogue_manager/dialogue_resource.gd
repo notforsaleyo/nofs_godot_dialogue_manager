@@ -8,6 +8,9 @@ class_name DialogueResource extends Resource
 ## A list of state shortcuts
 @export var using_states: PackedStringArray = []
 
+## A map of keys and values from "meta" lines.
+@export var file_meta: Dictionary = {}
+
 ## A map of cues and the lines they point to.
 @export var cues: Dictionary = {}
 
